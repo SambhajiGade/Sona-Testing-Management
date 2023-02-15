@@ -792,7 +792,7 @@
             <b
               ><font face="Century Gothic" color="#000000"><br /></font
             ></b>
-            <img src="../assets/img/g1.jpg" width="100" height="100" />
+            <!-- <img src="../assets/img/g1.jpg" width="100" height="100" /> -->
           </td>
           <td
             style="
@@ -809,7 +809,23 @@
             <b
               ><font face="Century Gothic" color="#000000"><br /></font
             ></b>
-            <img src="../assets/img/g2.jpg" width="100" height="100" />
+            <!-- <img src="../assets/img/g2.jpg" width="100" height="100" /> -->
+          </td> 
+          <td
+            style="
+              border-top: 2px solid #000000;
+              border-bottom: 1px solid #000000;
+              border-left: 1px solid #000000;
+              border-right: 1px solid #000000;
+            "
+            rowspan="3"
+            align="center"
+            valign="middle"
+            bgcolor="#00B050"
+            sdnum="1033;0;0"
+          >
+            <font face="Century Gothic" color="#000000"><br /></font>
+            <!-- <img src="../assets/img/g3.jpg" width="100" height="100" /> -->
           </td>
           <td
             style="
@@ -825,7 +841,7 @@
             sdnum="1033;0;0"
           >
             <font face="Century Gothic" color="#000000"><br /></font>
-            <img src="../assets/img/g3.jpg" width="100" height="100" />
+            <!-- <img src="../assets/img/g4.jpg" width="100" height="100" /> -->
           </td>
           <td
             style="
@@ -841,7 +857,7 @@
             sdnum="1033;0;0"
           >
             <font face="Century Gothic" color="#000000"><br /></font>
-            <img src="../assets/img/g4.jpg" width="100" height="100" />
+            <!-- <img src="../assets/img/g5.jpg" width="100" height="100" /> -->
           </td>
           <td
             style="
@@ -857,7 +873,7 @@
             sdnum="1033;0;0"
           >
             <font face="Century Gothic" color="#000000"><br /></font>
-            <img src="../assets/img/g5.jpg" width="100" height="100" />
+            <!-- <img src="../assets/img/g6.jpg" width="100" height="100" /> -->
           </td>
           <td
             style="
@@ -873,23 +889,7 @@
             sdnum="1033;0;0"
           >
             <font face="Century Gothic" color="#000000"><br /></font>
-            <img src="../assets/img/g6.jpg" width="100" height="100" />
-          </td>
-          <td
-            style="
-              border-top: 2px solid #000000;
-              border-bottom: 1px solid #000000;
-              border-left: 1px solid #000000;
-              border-right: 1px solid #000000;
-            "
-            rowspan="3"
-            align="center"
-            valign="middle"
-            bgcolor="#00B050"
-            sdnum="1033;0;0"
-          >
-            <font face="Century Gothic" color="#000000"><br /></font>
-            <img src="../assets/img/g7.jpg" width="100" height="100" />
+            <!-- <img src="../assets/img/g7.jpg" width="100" height="100" /> -->
           </td>
           <td
             style="
@@ -905,7 +905,7 @@
             sdnum="1033;0;0"
           >
             <font face="Century Gothic" color="#000000"><br /></font>
-            <img src="../assets/img/g8.jpg" width="100" height="100" />
+            <!-- <img src="../assets/img/g8.jpg" width="100" height="100" /> -->
           </td>
           <td
             style="
@@ -921,7 +921,7 @@
             sdnum="1033;0;0"
           >
             <font face="Century Gothic" color="#000000"><br /></font>
-            <img src="../assets/img/g9.jpg" width="100" height="100" />
+            <!-- <img src="../assets/img/g9.jpg" width="100" height="100" /> -->
           </td>
           <td
             style="
@@ -937,7 +937,7 @@
             sdnum="1033;0;0"
           >
             <font face="Century Gothic" color="#000000"><br /></font>
-            <img src="../assets/img/g10.jpg" width="100" height="100" />
+            <!-- <img src="../assets/img/g10.jpg" width="100" height="100" /> -->
           </td>
         </tr>
         <tr></tr>
@@ -971,7 +971,7 @@
             <b
               ><font face="Century Gothic" color="#000000"><br /></font
             ></b>
-            <img src="../assets/img/p1.jpg" width="100" height="100" />
+            <!-- <img src="../assets/img/p1.jpg" width="100" height="100" /> -->
           </td>
           <td
             style="
@@ -988,7 +988,7 @@
             <b
               ><font face="Century Gothic" color="#000000"><br /></font
             ></b>
-            <img src="../assets/img/p2.jpg" width="100" height="100" />
+            <!-- <img src="../assets/img/p2.jpg" width="100" height="100" /> -->
           </td>
           <td
             style="
@@ -1004,7 +1004,7 @@
             sdnum="1033;0;0"
           >
             <font face="Century Gothic" color="#000000"><br /></font>
-            <img src="../assets/img/p3.jpg" width="100" height="100" />
+            <!-- <img src="../assets/img/p3.jpg" width="100" height="100" /> -->
           </td>
           <td
             style="
@@ -1020,7 +1020,7 @@
             sdnum="1033;0;0"
           >
             <font face="Century Gothic" color="#000000"><br /></font>
-            <img src="../assets/img/p4.jpg" width="100" height="100" />
+            <!-- <img src="../assets/img/p4.jpg" width="100" height="100" /> -->
           </td>
           <td
             style="
@@ -1036,7 +1036,7 @@
             sdnum="1033;0;0"
           >
             <font face="Century Gothic" color="#000000"><br /></font>
-            <img src="../assets/img/p5.jpg" width="100" height="100" />
+            <!-- <img src="../assets/img/p5.jpg" width="100" height="100" /> -->
           </td>
           <td
             style="
@@ -1052,7 +1052,7 @@
             sdnum="1033;0;0"
           >
             <font face="Century Gothic" color="#000000"><br /></font>
-            <img src="../assets/img/p6.jpg" width="100" height="100" />
+            <!-- <img src="../assets/img/p6.jpg" width="100" height="100" /> -->
           </td>
           <td
             style="
@@ -1068,7 +1068,7 @@
             sdnum="1033;0;0"
           >
             <font face="Century Gothic" color="#000000"><br /></font>
-            <img src="../assets/img/p7.jpg" width="100" height="100" />
+            <!-- <img src="../assets/img/p7.jpg" width="100" height="100" /> -->
           </td>
           <td
             style="
@@ -1084,7 +1084,7 @@
             sdnum="1033;0;0"
           >
             <font face="Century Gothic" color="#000000"><br /></font>
-            <img src="../assets/img/p8.jpg" width="100" height="100" />
+            <!-- <img src="../assets/img/p8.jpg" width="100" height="100" /> -->
           </td>
           <td
             style="
@@ -1100,7 +1100,7 @@
             sdnum="1033;0;0"
           >
             <font face="Century Gothic" color="#000000"><br /></font>
-            <img src="../assets/img/p9.jpg" width="100" height="100" />
+            <!-- <img src="../assets/img/p9.jpg" width="100" height="100" /> -->
           </td>
           <td
             style="
@@ -1116,7 +1116,7 @@
             sdnum="1033;0;0"
           >
             <font face="Century Gothic" color="#000000"><br /></font>
-            <img src="../assets/img/p10.jpg" width="100" height="100" />
+            <!-- <img src="../assets/img/p10.jpg" width="100" height="100" /> -->
           </td>
         </tr>
         <tr></tr>

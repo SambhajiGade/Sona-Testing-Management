@@ -273,7 +273,7 @@ export default {
 
     async getapicall() {
       await axios
-      .get( "http://localhost:8083/api/items/"+this.DTFilterValue)
+        .get("http://localhost:8083/api/items/" + this.DTFilterValue)
         // .get("http://localhost:3000/DATA1?Project=" + this.DTFilterValue)
         .then((resp) => {
           this.SAM = resp.data;
@@ -298,7 +298,7 @@ export default {
             "http://localhost:8083/api/items/" +
               this.DTFilterValue +
               // "&JJ01=" +
-              "/"+
+              "/" +
               setarray[value] +
               // "&Column3=2Pinion"
               "/2Pinion"
@@ -326,7 +326,7 @@ export default {
         // console.log("value : ",value)
         await axios
           .get(
-            "http://localhost:8083/api/items/"+
+            "http://localhost:8083/api/items/" +
               this.DTFilterValue +
               "/" +
               setarray[value] +
@@ -398,7 +398,7 @@ export default {
       await this.find4P(set1);
       let main2P = [];
       let main4P = [];
-      let ind=0
+      let ind = 0;
       for (let index = 0; index < set1.length; index++) {
         if (this.P2[index].length == 3) {
           main2P[ind] = this.P2[index];
@@ -413,10 +413,9 @@ export default {
           main2P[ind] = this.P2[index];
           ind++;
         }
-        
       }
 
-let ind1=0;
+      let ind1 = 0;
       for (let index1 = 0; index1 < set1.length; index1++) {
         if (this.P4[index1].length == 3) {
           main4P[ind1] = this.P4[index1];
@@ -431,24 +430,23 @@ let ind1=0;
           main4P[ind1] = this.P4[index1];
           ind1++;
         }
-        
       }
 
       console.log("mainP2 : ", main2P);
-      console.log("mainP4 : ",main4P)
+      console.log("mainP4 : ", main4P);
 
-let Index=0;
-      let P2andP4=main2P.concat(main4P)
-      console.log("all main dataarray : ",P2andP4)
+      let Index = 0;
+      let P2andP4 = main2P.concat(main4P);
+      console.log("all main dataarray : ", P2andP4);
 
-      for(let i5=0;i5<P2andP4.length;i5++){
-        for(let i6=0;i6<3;i6++){
-          SAMG[Index]=P2andP4[i5][i6];
+      for (let i5 = 0; i5 < P2andP4.length; i5++) {
+        for (let i6 = 0; i6 < 3; i6++) {
+          SAMG[Index] = P2andP4[i5][i6];
           Index++;
         }
       }
 
-console.log("SAMG Final : ",SAMG)
+      console.log("SAMG Final : ", SAMG);
 
       // this.condition1=true
       let B1 = false;

@@ -38,8 +38,8 @@
             >
           </v-row>
 
-          <v-row>
-            <v-col cols="auto">
+          <!-- <v-row> -->
+            <!-- <v-col cols="auto">
               <p align="center">Gear Pair</p>
               <div v-for="item in GearPair" :key="item" class="ma-0">
                 <v-checkbox
@@ -49,9 +49,9 @@
                   class="ma-0"
                 ></v-checkbox>
               </div>
-            </v-col>
+            </v-col> -->
 
-            <v-col cols="auto">
+            <!-- <v-col cols="auto">
               <p align="center">Differential Torque</p>
 
               <div v-for="item in items1" :key="item" class="ma-0">
@@ -62,9 +62,9 @@
                   class="ma-0"
                 ></v-checkbox>
               </div>
-            </v-col>
+            </v-col> -->
 
-            <v-col cols="auto">
+            <!-- <v-col cols="auto">
               <p align="center">Application</p>
 
               <div v-for="item in Application" :key="item" class="ma-0">
@@ -75,9 +75,9 @@
                   class="ma-0"
                 ></v-checkbox>
               </div>
-            </v-col>
+            </v-col> -->
 
-            <v-col cols="auto">
+            <!-- <v-col cols="auto">
               <p align="center">Steps</p>
 
               <div v-for="item in items" :key="item" class="ma-0">
@@ -88,9 +88,9 @@
                   class="ma-0"
                 ></v-checkbox>
               </div>
-            </v-col>
+            </v-col> -->
 
-            <v-col cols="auto">
+            <!-- <v-col cols="auto">
               <p align="center">Fields</p>
 
               <div v-for="item in SortList" :key="item" class="ma-0">
@@ -101,12 +101,12 @@
                   class="ma-0"
                 ></v-checkbox>
               </div>
-            </v-col>
-          </v-row>
+            </v-col> -->
+          <!-- </v-row> -->
 
-          <v-row>
-            <v-col
-              cols="1"
+          <!-- <v-row> -->
+            <!-- <v-col
+              cols="3"
               class="pa-0"
               style="
                 display: flex;
@@ -115,7 +115,7 @@
               "
               align="center"
             >
-              <!-- <v-select
+             <v-select
                 :items="SortList"
                 v-model="SortedValue"
                 label="Select Field"
@@ -130,25 +130,25 @@
                 class="pt-6 pb-2 ml-3"
                 @change="SortField"
                 multiple
-              ></v-combobox> -->
+              ></v-combobox>
 
-              <span align="center">Between </span>
-            </v-col>
-            <v-col cols="1">
+              <span align="center">Between </span> 
+            </v-col> -->
+            <!-- <v-col cols="1">
               <v-text-field
                 v-model="greater"
                 type="number"
                 label="Greater than"
               ></v-text-field>
-            </v-col>
-            <v-col cols="1">
+            </v-col> -->
+            <!-- <v-col cols="1">
               <v-text-field
                 v-model="less"
                 type="number"
                 label="Less than"
               ></v-text-field>
-            </v-col>
-          </v-row>
+            </v-col> -->
+          <!-- </v-row> -->
         </template>
 
         <v-card>
@@ -975,6 +975,7 @@
         </v-card>
       </v-dialog>
     </div>
+    
 
     <v-data-table
       v-model="selected1"
@@ -986,11 +987,361 @@
       class="elevation-1"
       id="ttable1"
     >
+
+    <template v-for="(col1, i) in filters1"  v-slot:[`header.${i}`]="{ header }" >
+        <div style="display: inline-block; padding: 0px 0;" :key="col1"> {{header.text}}</div>
+        <div style="float: right; margin-top: 0px" :key="col1" >
+          <v-menu :close-on-content-click="false" :nudge-width="200" offset-y transition="slide-y-transition" left fixed style="position: absolute; right: 8px">
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn color="indigo" icon v-bind="attrs" v-on="on">
+                <v-icon small 
+                  :color="activeFilters1[header.value].length >0 ? 'red' : 'default'">
+                  mdi-filter-variant
+                </v-icon>
+              </v-btn>
+            </template >
+<v-card>
+
+  <v-combobox
+  v-if="check(header.value)==='project'"
+      v-model="SortedGearPair"
+      :items="GearPair"
+      label="Select GearPair"
+      class="pt-6 pb-2 ml-3"
+     background-color="white"
+     v-bind="attrs"
+    v-on="listeners"
+    
+    
+      multiple
+    >
+    <template v-slot:selection="">
+     
+    </template>
+  </v-combobox>
+    
+                  <v-combobox
+                v-if="check(header.value)==='jj01'"
+                    v-model="SortedDT"
+                    :items="items1"
+                    label="Select Differential Torque"
+                    class="pt-6 pb-2 ml-3"
+                    
+                    multiple
+                  ></v-combobox>
+    
+                  <v-combobox
+                v-if="check(header.value)==='column3'"
+                    v-model="SortedApplication"
+                    :items="Application"
+                    label="Select Application"
+                    class="pt-6 pb-2 ml-3"
+                   
+                    multiple
+                  ></v-combobox>
+    
+                  <v-combobox
+                v-if="check(header.value)==='report'"
+                    v-model="SortedSteps"
+                    :items="items"
+                    label="Select Steps"
+                    class="pt-6 pb-2 ml-3"
+                   
+                    multiple
+                  ></v-combobox>
+</v-card>
+
+              <v-card v-if="check(header.value)==='mcs1'" >
+               
+              <v-text-field
+                v-model="greatermcs1"
+                type="number"
+                label="Greater than"
+              ></v-text-field>
+           
+              <v-text-field
+                v-model="lessmcs1"
+                type="number"
+                label="Less than"
+              ></v-text-field>
+          
+              </v-card>
+
+              <v-card v-if="check(header.value)==='rib1'" >
+               
+               <v-text-field
+                 v-model="greaterrib1"
+                 type="number"
+                 label="Greater than"
+               ></v-text-field>
+            
+               <v-text-field
+                 v-model="lessrib1"
+                 type="number"
+                 label="Less than"
+               ></v-text-field>
+           
+               </v-card>
+
+               <v-card v-if="check(header.value)==='root1'" >
+               
+               <v-text-field
+                 v-model="greaterroot1"
+                 type="number"
+                 label="Greater than"
+               ></v-text-field>
+            
+               <v-text-field
+                 v-model="lessroot1"
+                 type="number"
+                 label="Less than"
+               ></v-text-field>
+           
+               </v-card>
+
+               <v-card v-if="check(header.value)==='web1'" >
+               
+               <v-text-field
+                 v-model="greaterweb1"
+                 type="number"
+                 label="Greater than"
+               ></v-text-field>
+            
+               <v-text-field
+                 v-model="lessweb1"
+                 type="number"
+                 label="Less than"
+               ></v-text-field>
+           
+               </v-card>
+
+               <v-card v-if="check(header.value)==='rib2'" >
+                
+                <v-text-field
+                  v-model="greaterrib2"
+                  type="number"
+                  label="Greater than"
+                ></v-text-field>
+             
+                <v-text-field
+                  v-model="lessrib2"
+                  type="number"
+                  label="Less than"
+                ></v-text-field>
+            
+                </v-card>
+ 
+                <v-card v-if="check(header.value)==='root2'" >
+                
+                <v-text-field
+                  v-model="greaterroot2"
+                  type="number"
+                  label="Greater than"
+                ></v-text-field>
+             
+                <v-text-field
+                  v-model="lessroot2"
+                  type="number"
+                  label="Less than"
+                ></v-text-field>
+            
+                </v-card>
+ 
+                <v-card v-if="check(header.value)==='web2'" >
+                
+                <v-text-field
+                  v-model="greaterweb2"
+                  type="number"
+                  label="Greater than"
+                ></v-text-field>
+             
+                <v-text-field
+                  v-model="lessweb2"
+                  type="number"
+                  label="Less than"
+                ></v-text-field>
+            
+                </v-card>
+
+
+
+                <v-card v-if="check(header.value)==='mcs2'" >
+               
+               <v-text-field
+                 v-model="greatermcs2"
+                 type="number"
+                 label="Greater than"
+               ></v-text-field>
+            
+               <v-text-field
+                 v-model="lessmcs2"
+                 type="number"
+                 label="Less than"
+               ></v-text-field>
+           
+               </v-card>
+               <v-card v-if="check(header.value)==='rib3'" >
+                
+                <v-text-field
+                  v-model="greaterrib3"
+                  type="number"
+                  label="Greater than"
+                ></v-text-field>
+             
+                <v-text-field
+                  v-model="lessrib3"
+                  type="number"
+                  label="Less than"
+                ></v-text-field>
+            
+                </v-card>
+ 
+                <v-card v-if="check(header.value)==='root3'" >
+                
+                <v-text-field
+                  v-model="greaterroot3"
+                  type="number"
+                  label="Greater than"
+                ></v-text-field>
+             
+                <v-text-field
+                  v-model="lessroot3"
+                  type="number"
+                  label="Less than"
+                ></v-text-field>
+            
+                </v-card>
+ 
+                <v-card v-if="check(header.value)==='web3'" >
+                
+                <v-text-field
+                  v-model="greaterweb3"
+                  type="number"
+                  label="Greater than"
+                ></v-text-field>
+             
+                <v-text-field
+                  v-model="lessweb3"
+                  type="number"
+                  label="Less than"
+                ></v-text-field>
+            
+                </v-card>
+ 
+                <v-card v-if="check(header.value)==='rib4'" >
+                 
+                 <v-text-field
+                   v-model="greaterrib4"
+                   type="number"
+                   label="Greater than"
+                 ></v-text-field>
+              
+                 <v-text-field
+                   v-model="lessrib4"
+                   type="number"
+                   label="Less than"
+                 ></v-text-field>
+             
+                 </v-card>
+  
+                 <v-card v-if="check(header.value)==='root4'" >
+                 
+                 <v-text-field
+                   v-model="greaterroot4"
+                   type="number"
+                   label="Greater than"
+                 ></v-text-field>
+              
+                 <v-text-field
+                   v-model="lessroot4"
+                   type="number"
+                   label="Less than"
+                 ></v-text-field>
+             
+                 </v-card>
+  
+                 <v-card v-if="check(header.value)==='web4'" >
+                 
+                 <v-text-field
+                   v-model="greaterweb4"
+                   type="number"
+                   label="Greater than"
+                 ></v-text-field>
+              
+                 <v-text-field
+                   v-model="lessweb4"
+                   type="number"
+                   label="Less than"
+                 ></v-text-field>
+             
+                 </v-card>
+
+                 <v-card v-if="check(header.value)==='remark'" >
+                 
+                 <v-text-field
+                   v-model="Gremark"
+                   type="number"
+                   label="Greater than"
+                 ></v-text-field>
+              
+                 <v-text-field
+                   v-model="Lremark"
+                   type="number"
+                   label="Less than"
+                 ></v-text-field>
+             
+                 </v-card>
+
+
+<!--             <v-list flat dense class="pa-0" v-if="counter(header.value)==='sambhaji'">
+              <v-list-item-group multiple v-model="activeFilters1[header.value]" class="py-2">
+                <template v-for="(item, i) in filters1[header.value]" >
+                  <v-list-item :key="`item-${i}`" :value="item" :ripple="false">
+                    <template v-slot:default="{ active, toggle }">
+                      <v-list-item-action>
+                        <v-checkbox :input-value="active" :true-value="item"
+                          @click="toggle" color="primary" dense></v-checkbox>
+                      </v-list-item-action>
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item"></v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                  </v-list-item>
+                </template>
+              </v-list-item-group>
+              <v-divider></v-divider>
+              <v-btn text block @click="toggleAll1(header.value)">Toggle all</v-btn>
+              <v-btn text block @click="clearAll1(header.value)">Clear all</v-btn>
+            </v-list> -->
+          </v-menu>
+        </div>
+      </template>
+      
+
+
     </v-data-table>
   </v-app>
 </template>
 
 <style>
+
+/* .v-list--dense .v-list-item, .v-list-item--dense {
+  min-height: 20px !important;
+  height: 2rem;
+}
+
+.v-application--is-ltr .v-list-item__action:first-child, .v-application--is-ltr .v-list-item__icon:first-child {
+  margin-right: .5rem !important;
+}
+
+.v-list-item--link {
+  transition: background-color .3s cubic-bezier(.25,.8,.5,1);
+}
+
+.v-list-item--link:hover {
+  background-color: rgba(0,0,0, .13);
+} */
+
 #b1 {
   margin-left: 44%;
   margin-top: 30px;
@@ -1095,29 +1446,47 @@ export default {
       less: "",
       greater: "",
 
-      SortGmcs1: "",
-      SortGmcs2: "",
-      SortGrib1: "",
-      SortGroot1: "",
-      SortGweb1: "",
-      SortGrib2: "",
-      SortGroot2: "",
-      SortGweb2: "",
+      greatermcs1: "",
+      greatermcs2: "",
+      greaterrib1: "",
+      greaterroot1: "",
+      greaterweb1: "",
+      greaterrib2: "",
+      greaterroot2: "",
+      greaterweb2: "",
+      greaterrib3: "",
+      greaterroot3: "",
+      greaterweb3: "",
+      greaterrib4: "",
+      greaterroot4: "",
+      greaterweb4: "",
 
-      SortLmcs1: "",
-      SortLmcs2: "",
-      SortLrib1: "",
-      SortLroot1: "",
-      SortLweb1: "",
-      SortLrib2: "",
-      SortLroot2: "",
-      SortLweb2: "",
+      lessmcs1: "",
+      lessmcs2: "",
+      lessrib1: "",
+      lessroot1: "",
+      lessweb1: "",
+      lessrib2: "",
+      lessroot2: "",
+      lessweb2: "",
+      lessrib3: "",
+      lessroot3: "",
+      lessweb3: "",
+      lessrib4: "",
+      lessroot4: "",
+      lessweb4: "",
+      Gremark:"",
+      Lremark:"",
 
       singleSelect1: true,
       selected1: [],
       disableb: true,
       dialog: false,
       dialog1: false,
+      filters1:{'Project': [], 'JJ01': [], 'Column3': [],'Report':[],'Column5':[],'Column6':[],'Column7':[],'Column8':[],'Column9':[],'Column10':[],'Column11':[],'Column12':[],'Column13':[],'Column14':[],'Column15':[],'Column16':[],'Column17':[],'Column18':[],'Column19':[]},
+      activeFilters1: {},
+      
+      key:1,
 
       path1: "/Dashboard/ ",
       path2: "/Dashboard/",
@@ -1207,6 +1576,22 @@ export default {
       },
     };
   },
+
+  watch:{
+    SortedGearPair (val){
+      this.activeFilters1['Project']=val;
+    },
+    SortedApplication(val){
+      this.activeFilters1['Column3']=val
+    },
+    SortedDT(val){
+      this.activeFilters1['JJ01']=val
+    },
+    SortedSteps(val){
+      this.activeFilters1['Report']=val
+    }
+
+  },
   computed: {
     headers() {
       return [
@@ -1217,27 +1602,69 @@ export default {
           value: "Project",
           // filter: this.DTFilter,
           filter: (value) => {
-            if (!this.SortedGearPair.length) {
+            // console.log("sortedgearpair : ",this.SortedGearPair)
+            console.log("activefilters : ",this.activeFilters1)
+            // console.log("filters : ",this.filters1)
+            // var valObj = this.SortedGearPair.filter(function (elem) {
+            //   if (elem.value == "JJ01-A1B1") {
+            //     return elem.value;
+            //   }
+            // });
+            // console.log("valobjproject : ",valObj)
+
+            let SortedGearPair1=[];
+            if(this.SortedGearPair){
+
+              var valObj = this.SortedGearPair.filter(function (elem) {
+              // console.log("element : ",elem.value)
+              SortedGearPair1.push(elem.value)
+                return elem.value;
+              
+            });
+            }
+            console.log("valobjproject : ",valObj)
+
+            // let item;
+            // for( item in this.SortedGearPair){
+            //   console.log("item : ",item)
+            //   SortedGearPair1.push(item.value)
+            // }
+            // console.log("SortedGearpair1 : ",SortedGearPair1)
+            if (!SortedGearPair1.length) {
               return true;
             } else {
               console.log("I am in else");
-              let val = this.SortedGearPair.includes(value);
+              let val = SortedGearPair1.includes(value);
 
               if (val) {
                 return value;
               }
             }
           },
+          // filter: value => {
+          //   return this.activeFilters.Project.includes(value);
+          // },
         },
         {
-          text: "Diffrential \nTorque",
+          text: "Differential \nTorque",
           value: "JJ01",
           // filter: this.DTFilter,
           filter: (value) => {
-            if (!this.SortedDT.length) {
+            let SortedDT1=[];
+            if(this.SortedDT){
+
+              var valObj = this.SortedDT.filter(function (elem) {
+          
+              SortedDT1.push(elem.value)
+                return elem.value;
+              
+            });
+            }
+            console.log("valobjproject : ",valObj)
+            if (!SortedDT1.length) {
               return true;
             } else {
-              let val = this.SortedDT.includes(value);
+              let val = SortedDT1.includes(value);
 
               if (val) {
                 return value;
@@ -1249,10 +1676,21 @@ export default {
           text: "Application",
           value: "Column3",
           filter: (value) => {
-            if (!this.SortedApplication.length) {
+            let SortedApplication1=[];
+            if(this.SortedApplication){
+
+              var valObj = this.SortedApplication.filter(function (elem) {
+          
+              SortedApplication1.push(elem.value)
+                return elem.value;
+              
+            });
+            }
+            console.log("valobjproject : ",valObj)
+            if (!SortedApplication1.length) {
               return true;
             } else {
-              let val = this.SortedApplication.includes(value);
+              let val = SortedApplication1.includes(value);
 
               if (val) {
                 return value;
@@ -1264,10 +1702,22 @@ export default {
           text: "Step",
           value: "Report",
           filter: (value) => {
-            if (!this.SortedSteps.length) {
+
+            let SortedSteps1=[];
+            if(this.SortedSteps){
+
+              var valObj = this.SortedSteps.filter(function (elem) {
+          
+              SortedSteps1.push(elem.value)
+                return elem.value;
+              
+            });
+            }
+            console.log("valobjproject : ",valObj)
+            if (!SortedSteps1.length) {
               return true;
             } else {
-              let val = this.SortedSteps.includes(value);
+              let val = SortedSteps1.includes(value);
 
               if (val) {
                 return value;
@@ -1279,34 +1729,37 @@ export default {
           text: "MCS",
           value: "Column5",
           filter: (value) => {
-            console.log("mcs1 value is :", value);
-            console.log("selected array : ", this.SortedValue);
-            var valObj = this.SortedValue.filter(function (elem) {
-              if (elem.value == "mcs1") {
-                return elem.value;
-              }
-            });
-
-            if (valObj.length) {
-              this.SortGmcs1 = this.greater;
-              this.SortLmcs1 = this.less;
-            } else {
-              this.SortGmcs1 = "";
-              this.SortLmcs1 = "";
-            }
+            // console.log("mcs1 value is :", value);
+            // let samarray=[]
+            // console.log("selected array : ", this.SortedValue);
+            // var valObj = this.SortedValue.filter(function (elem) {
+            //   if (elem.value == "mcs1") {
+            //     // samarray.push(elem.value)
+            //     return elem.value;
+            //   }
+            // });
+            // // console.log("valobjmcs1 : ",valObj)
+            // // console.log("samarray : ",samarray)
+            // if (valObj.length) {
+            //   this.SortGmcs1 = this.greater;
+            //   this.SortLmcs1 = this.less;
+            // } else {
+            //   this.SortGmcs1 = "";
+            //   this.SortLmcs1 = "";
+            // }
             // console.log("Gmcs : ", this.SortGmcs1);
-            if (!this.SortLmcs1 && !this.SortGmcs1) return true;
+            if (!this.lessmcs1 && !this.greatermcs1) return true;
             // if(this.sam) return value > parseInt(this.sam)
-            if (this.SortLmcs1 && !this.SortGmcs1) {
-              let S = value <= parseInt(this.SortLmcs1);
+            if (this.lessmcs1 && !this.greatermcs1) {
+              let S = value <= parseInt(this.lessmcs1);
               return S;
-            } else if (!this.SortLmcs1 && this.SortGmcs1) {
-              let S = value >= parseInt(this.SortGmcs1);
+            } else if (!this.lessmcs1 && this.greatermcs1) {
+              let S = value >= parseInt(this.greatermcs1);
               return S;
             } else {
               let S =
-                value <= parseInt(this.SortLmcs1) &&
-                value >= parseInt(this.SortGmcs1);
+                value <= parseInt(this.lessmcs1) &&
+                value >= parseInt(this.greatermcs1);
               return S;
             }
           },
@@ -1315,32 +1768,32 @@ export default {
           text: "Rib (MBS)",
           value: "Column6",
           filter: (value) => {
-            console.log("rib1 value is :", value);
-            var valObj = this.SortedValue.filter(function (elem) {
-              if (elem.value == "rib1") return elem.value;
-            });
+            // console.log("rib1 value is :", value);
+            // var valObj = this.SortedValue.filter(function (elem) {
+            //   if (elem.value == "rib1") return elem.value;
+            // });
 
-            if (valObj.length) {
-              this.SortGrib1 = this.greater;
-              this.SortLrib1 = this.less;
-              console.log("Grib : ", this.SortGrib1);
-            } else {
-              this.SortGrib1 = "";
-              this.SortLrib1 = "";
-            }
+            // if (valObj.length) {
+            //   this.SortGrib1 = this.greater;
+            //   this.SortLrib1 = this.less;
+            //   // console.log("Grib : ", this.SortGrib1);
+            // } else {
+            //   this.SortGrib1 = "";
+            //   this.SortLrib1 = "";
+            // }
             // console.log("Grib : ", this.SortGrib1)
-            if (!this.SortLrib1 && !this.SortGrib1) return true;
+            if (!this.lessrib1 && !this.greaterrib1) return true;
             // if(this.sam) return value > parseInt(this.sam)
-            if (this.SortLrib1 && !this.SortGrib1) {
-              let S = value <= parseInt(this.SortLrib1);
+            if (this.lessrib1 && !this.greaterrib1) {
+              let S = value <= parseInt(this.lessrib1);
               return S;
-            } else if (!this.SortLrib1 && this.SortGrib1) {
-              let S = value >= parseInt(this.SortGrib1);
+            } else if (!this.lessrib1 && this.greaterrib1) {
+              let S = value >= parseInt(this.greaterrib1);
               return S;
             } else {
               let S =
-                value <= parseInt(this.SortLrib1) &&
-                value >= parseInt(this.SortGrib1);
+                value <= parseInt(this.lessrib1) &&
+                value >= parseInt(this.greaterrib1);
               return S;
             }
           },
@@ -1349,32 +1802,32 @@ export default {
           text: "Root (MBS)",
           value: "Column7",
           filter: (value) => {
-            console.log("root1 value is :", value);
-            var valObj = this.SortedValue.filter(function (elem) {
-              if (elem.value == "root1") return elem.value;
-            });
+            // console.log("root1 value is :", value);
+            // var valObj = this.SortedValue.filter(function (elem) {
+            //   if (elem.value == "root1") return elem.value;
+            // });
 
-            if (valObj.length) {
-              this.SortGroot1 = this.greater;
-              this.SortLroot1 = this.less;
-              // console.log("Groot : ", this.SortGroot1);
-            } else {
-              this.SortGroot1 = "";
-              this.SortLroot1 = "";
-            }
+            // if (valObj.length) {
+            //   this.SortGroot1 = this.greater;
+            //   this.SortLroot1 = this.less;
+            //   // console.log("Groot : ", this.SortGroot1);
+            // } else {
+            //   this.SortGroot1 = "";
+            //   this.SortLroot1 = "";
+            // }
             // console.log("Groot : ", this.SortGroot1)
-            if (!this.SortLroot1 && !this.SortGroot1) return true;
+            if (!this.lessroot1 && !this.greaterroot1) return true;
             // if(this.sam) return value > parseInt(this.sam)
-            if (this.SortLroot1 && !this.SortGroot1) {
-              let S = value <= parseInt(this.SortLroot1);
+            if (this.lessroot1 && !this.greaterroot1) {
+              let S = value <= parseInt(this.lessroot1);
               return S;
-            } else if (!this.SortLroot1 && this.SortGroot1) {
-              let S = value >= parseInt(this.SortGroot1);
+            } else if (!this.lessroot1 && this.greaterroot1) {
+              let S = value >= parseInt(this.greaterroot1);
               return S;
             } else {
               let S =
-                value <= parseInt(this.SortLroot1) &&
-                value >= parseInt(this.SortGroot1);
+                value <= parseInt(this.lessroot1) &&
+                value >= parseInt(this.greaterroot1);
               return S;
             }
           },
@@ -1383,29 +1836,29 @@ export default {
           text: "Web (MBS)",
           value: "Column8",
           filter: (value) => {
-            var valObj = this.SortedValue.filter(function (elem) {
-              if (elem.value == "web1") return elem.value;
-            });
+            // var valObj = this.SortedValue.filter(function (elem) {
+            //   if (elem.value == "web1") return elem.value;
+            // });
 
-            if (valObj.length) {
-              this.SortGweb1 = this.greater;
-              this.SortLweb1 = this.less;
-            } else {
-              this.SortGweb1 = "";
-              this.SortLweb1 = "";
-            }
-            if (!this.SortLweb1 && !this.SortGweb1) return true;
+            // if (valObj.length) {
+            //   this.SortGweb1 = this.greater;
+            //   this.SortLweb1 = this.less;
+            // } else {
+            //   this.SortGweb1 = "";
+            //   this.SortLweb1 = "";
+            // }
+            if (!this.lessweb1 && !this.greaterweb1) return true;
             // if(this.sam) return value > parseInt(this.sam)
-            if (this.SortLweb1 && !this.SortGweb1) {
-              let S = value < parseInt(this.SortLweb1);
+            if (this.lessweb1 && !this.greaterweb1) {
+              let S = value <= parseInt(this.lessweb1);
               return S;
-            } else if (!this.SortLweb1 && this.SortGweb1) {
-              let S = value > parseInt(this.SortGweb1);
+            } else if (!this.lessweb1 && this.greaterweb1) {
+              let S = value >= parseInt(this.greaterweb1);
               return S;
             } else {
               let S =
-                value < parseInt(this.SortLweb1) &&
-                value > parseInt(this.SortGweb1);
+                value <= parseInt(this.lessweb1) &&
+                value >= parseInt(this.greaterweb1);
               return S;
             }
           },
@@ -1414,29 +1867,29 @@ export default {
           text: "Rib (MBS)",
           value: "Column9",
           filter: (value) => {
-            var valObj = this.SortedValue.filter(function (elem) {
-              if (elem.value == "rib2") return elem.value;
-            });
+            // var valObj = this.SortedValue.filter(function (elem) {
+            //   if (elem.value == "rib2") return elem.value;
+            // });
 
-            if (valObj.length) {
-              this.SortGrib2 = this.greater;
-              this.SortLrib2 = this.less;
-            } else {
-              this.SortGrib2 = "";
-              this.SortLrib2 = "";
-            }
-            if (!this.SortLrib2 && !this.SortGrib2) return true;
+            // if (valObj.length) {
+            //   this.SortGrib2 = this.greater;
+            //   this.SortLrib2 = this.less;
+            // } else {
+            //   this.SortGrib2 = "";
+            //   this.SortLrib2 = "";
+            // }
+            if (!this.lessrib2 && !this.greaterrib2) return true;
             // if(this.sam) return value > parseInt(this.sam)
-            if (this.SortLrib2 && !this.SortGrib2) {
-              let S = value <= parseInt(this.SortLrib2);
+            if (this.lessrib2 && !this.greaterrib2) {
+              let S = value <= parseInt(this.lessrib2);
               return S;
-            } else if (!this.SortLrib2 && this.SortGrib2) {
-              let S = value >= parseInt(this.SortGrib2);
+            } else if (!this.lessrib2 && this.greaterrib2) {
+              let S = value >= parseInt(this.greaterrib2);
               return S;
             } else {
               let S =
-                value <= parseInt(this.SortLrib2) &&
-                value >= parseInt(this.SortGrib2);
+                value <= parseInt(this.lessrib2) &&
+                value >= parseInt(this.greaterrib2);
               return S;
             }
           },
@@ -1445,29 +1898,29 @@ export default {
           text: "Root (MBS)",
           value: "Column10",
           filter: (value) => {
-            var valObj = this.SortedValue.filter(function (elem) {
-              if (elem.value == "root2") return elem.value;
-            });
+            // var valObj = this.SortedValue.filter(function (elem) {
+            //   if (elem.value == "root2") return elem.value;
+            // });
 
-            if (valObj.length) {
-              this.SortGroot2 = this.greater;
-              this.SortLroot2 = this.less;
-            } else {
-              this.SortGroot2 = "";
-              this.SortLroot2 = "";
-            }
-            if (!this.SortLroot2 && !this.SortGroot2) return true;
+            // if (valObj.length) {
+            //   this.SortGroot2 = this.greater;
+            //   this.SortLroot2 = this.less;
+            // } else {
+            //   this.SortGroot2 = "";
+            //   this.SortLroot2 = "";
+            // }
+            if (!this.lessroot2 && !this.greaterroot2) return true;
             // if(this.sam) return value > parseInt(this.sam)
-            if (this.SortLroot2 && !this.SortGroot2) {
-              let S = value <= parseInt(this.SortLroot2);
+            if (this.lessroot2 && !this.greaterroot2) {
+              let S = value <= parseInt(this.lessroot2);
               return S;
-            } else if (!this.SortLroot2 && this.SortGroot2) {
-              let S = value >= parseInt(this.SortGroot2);
+            } else if (!this.lessroot2 && this.greaterroot2) {
+              let S = value >= parseInt(this.greaterroot2);
               return S;
             } else {
               let S =
-                value <= parseInt(this.SortLroot2) &&
-                value >= parseInt(this.SortGroot2);
+                value <= parseInt(this.lessroot2) &&
+                value >= parseInt(this.greaterroot2);
               return S;
             }
           },
@@ -1476,29 +1929,19 @@ export default {
           text: "Web (MBS)",
           value: "Column11",
           filter: (value) => {
-            var valObj = this.SortedValue.filter(function (elem) {
-              if (elem.value == "web2") return elem.value;
-            });
-
-            if (valObj.length) {
-              this.SortGweb2 = this.greater;
-              this.SortLweb2 = this.less;
-            } else {
-              this.SortGweb2 = "";
-              this.SortLweb2 = "";
-            }
-            if (!this.SortLweb2 && !this.SortGweb2) return true;
+          
+            if (!this.lessweb2 && !this.greaterweb2) return true;
             // if(this.sam) return value > parseInt(this.sam)
-            if (this.SortLweb2 && !this.SortGweb2) {
-              let S = value <= parseInt(this.SortLweb2);
+            if (this.lessweb2 && !this.greaterweb2) {
+              let S = value <= parseInt(this.lessweb2);
               return S;
-            } else if (!this.SortLweb2 && this.SortGweb2) {
-              let S = value >= parseInt(this.SortGweb2);
+            } else if (!this.lessweb2 && this.greaterweb2) {
+              let S = value >= parseInt(this.greaterweb2);
               return S;
             } else {
               let S =
-                value <= parseInt(this.SortLweb2) &&
-                value >= parseInt(this.SortGweb2);
+                value <= parseInt(this.lessweb2) &&
+                value >= parseInt(this.greaterweb2);
               return S;
             }
           },
@@ -1507,48 +1950,260 @@ export default {
           text: "MCS",
           value: "Column12",
           filter: (value) => {
-            var valObj = this.SortedValue.filter(function (elem) {
-              if (elem.value == "mcs2") return elem.value;
-            });
+            // var valObj = this.SortedValue.filter(function (elem) {
+            //   if (elem.value == "mcs2") return elem.value;
+            // });
 
-            if (valObj.length) {
-              this.SortGmcs2 = this.greater;
-              this.SortLmcs2 = this.less;
-            } else {
-              this.SortGmcs2 = "";
-              this.SortLmcs2 = "";
-            }
-            if (!this.SortLmcs2 && !this.SortGmcs2) return true;
+            // if (valObj.length) {
+            //   this.SortGmcs2 = this.greater;
+            //   this.SortLmcs2 = this.less;
+            // } else {
+            //   this.SortGmcs2 = "";
+            //   this.SortLmcs2 = "";
+            // }
+            if (!this.lessmcs2 && !this.greatermcs2) return true;
             // if(this.sam) return value > parseInt(this.sam)
-            if (this.SortLmcs2 && !this.SortGmcs2) {
-              let S = value <= parseInt(this.SortLmcs2);
+            if (this.lessmcs2 && !this.greatermcs2) {
+              let S = value <= parseInt(this.lessmcs2);
               return S;
-            } else if (!this.SortLmcs2 && this.SortGmcs2) {
-              let S = value >= parseInt(this.SortGmcs2);
+            } else if (!this.lessmcs2 && this.greatermcs2) {
+              let S = value >= parseInt(this.greatermcs2);
               return S;
             } else {
               let S =
-                value <= parseInt(this.SortLmcs2) &&
-                value >= parseInt(this.SortGmcs2);
+                value <= parseInt(this.lessmcs2) &&
+                value >= parseInt(this.greatermcs2);
               return S;
             }
           },
         },
-        { text: "Rib (MBS)", value: "Column13" },
-        { text: "Root (MBS)", value: "Column14" },
-        { text: "Web (MBS)", value: "Column15" },
-        { text: "Rib (MBS)", value: "Column16" },
-        { text: "Root (MBS)", value: "Column17" },
-        { text: "Web (MBS)", value: "Column18" },
-        { text: "Remarks", value: "Column19" },
+        { text: "Rib (MBS)", value: "Column13" ,
+          filter: (value) => {
+          
+            if (!this.lessrib3 && !this.greaterrib3) return true;
+            // if(this.sam) return value > parseInt(this.sam)
+            if (this.lessrib3 && !this.greaterrib3) {
+              let S = value <= parseInt(this.lessrib3);
+              return S;
+            } else if (!this.lessrib3 && this.greaterrib3) {
+              let S = value >= parseInt(this.greaterrib3);
+              return S;
+            } else {
+              let S =
+                value <= parseInt(this.lessrib3) &&
+                value >= parseInt(this.greaterrib3);
+              return S;
+            }
+          },},
+        { text: "Root (MBS)", value: "Column14" 
+        ,
+          filter: (value) => {
+          
+            if (!this.lessroot3 && !this.greaterroot3) return true;
+            // if(this.sam) return value > parseInt(this.sam)
+            if (this.lessroot3 && !this.greaterroot3) {
+              let S = value <= parseInt(this.lessroot3);
+              return S;
+            } else if (!this.lessroot3 && this.greaterroot3) {
+              let S = value >= parseInt(this.greaterroot3);
+              return S;
+            } else {
+              let S =
+                value <= parseInt(this.lessroot3) &&
+                value >= parseInt(this.greaterroot3);
+              return S;
+            }
+          },
+      },
+        { text: "Web (MBS)", value: "Column15"  ,
+          filter: (value) => {
+          
+            if (!this.lessweb3 && !this.greaterweb3) return true;
+            // if(this.sam) return value > parseInt(this.sam)
+            if (this.lessweb3 && !this.greaterweb3) {
+              let S = value <= parseInt(this.lessweb3);
+              return S;
+            } else if (!this.lessweb3 && this.greaterweb3) {
+              let S = value >= parseInt(this.greaterweb3);
+              return S;
+            } else {
+              let S =
+                value <= parseInt(this.lessweb3) &&
+                value >= parseInt(this.greaterweb3);
+              return S;
+            }
+          }, },
+        { text: "Rib (MBS)", value: "Column16"  ,
+          filter: (value) => {
+          
+            if (!this.lessrib4 && !this.greaterrib4) return true;
+            // if(this.sam) return value > parseInt(this.sam)
+            if (this.lessrib4 && !this.greaterrib4) {
+              let S = value <= parseInt(this.lessrib4);
+              return S;
+            } else if (!this.lessrib4 && this.greaterrib4) {
+              let S = value >= parseInt(this.greaterrib4);
+              return S;
+            } else {
+              let S =
+                value <= parseInt(this.lessrib4) &&
+                value >= parseInt(this.greaterrib4);
+              return S;
+            }
+          },},
+        { text: "Root (MBS)", value: "Column17"  ,
+          filter: (value) => {
+          
+            if (!this.lessroot4 && !this.greaterroot4) return true;
+            // if(this.sam) return value > parseInt(this.sam)
+            if (this.lessroot4 && !this.greaterroot4) {
+              let S = value <= parseInt(this.lessroot4);
+              return S;
+            } else if (!this.lessroot4 && this.greaterroot4) {
+              let S = value >= parseInt(this.greaterroot4);
+              return S;
+            } else {
+              let S =
+                value <= parseInt(this.lessroot4) &&
+                value >= parseInt(this.greaterroot4);
+              return S;
+            }
+          }, },
+        { text: "Web (MBS)", value: "Column18" 
+        ,
+          filter: (value) => {
+          
+            if (!this.lessweb4 && !this.greaterweb4) return true;
+            // if(this.sam) return value > parseInt(this.sam)
+            if (this.lessweb4 && !this.greaterweb4) {
+              let S = value <= parseInt(this.lessweb4);
+              return S;
+            } else if (!this.lessweb4 && this.greaterweb4) {
+              let S = value >= parseInt(this.greaterweb4);
+              return S;
+            } else {
+              let S =
+                value <= parseInt(this.lessweb4) &&
+                value >= parseInt(this.greaterweb4);
+              return S;
+            }
+          },
+      },
+        { text: "Remarks", value: "Column19"  ,
+          filter: (value) => {
+          
+            if (!this.Lremark && !this.Gremark) return true;
+            // if(this.sam) return value > parseInt(this.sam)
+            if (this.Lremark && !this.Gremark) {
+              let S = value <= parseInt(this.Lremark);
+              return S;
+            } else if (!this.Lremark && this.Gremark) {
+              let S = value >= parseInt(this.Gremark);
+              return S;
+            } else {
+              let S =
+                value <= parseInt(this.Lremark) &&
+                value >= parseInt(this.Gremark);
+              return S;
+            }
+          },},
       ];
     },
   },
   mounted() {
     this.getapicall();
   },
-  created() {},
+  created() {
+    this.initialize()
+  },
   methods: {
+
+initialize(){
+  let col1
+  for (col1 in this.filters1) {
+        this.filters1[col1] = this.SAM.map((d1) => { return d1[col1] }).filter(
+          (value1, index1, self1) => { return self1.indexOf(value1) === index1 }
+        );
+         console.log("filters1 for loop : ",this.filters1[col1])
+      }
+      this.activeFilters1 = Object.assign({}, this.filters1)
+      console.log("ActiveFilters1 : ",this.activeFilters1)
+},
+
+check(t){
+     // this.count=this.count+1
+    //  console.log("counter : ",t)
+     if(t==='Project'){
+
+       return 'project'
+     }
+     else if(t==='JJ01'){
+      return 'jj01'
+     }
+     else if(t==='Column3'){
+      return 'column3'
+     }
+     else if(t==='Report'){
+      return 'report'
+     }
+     else if(t==='Column5'){
+      return 'mcs1'
+
+     }
+     else if(t==='Column6'){
+      return 'rib1'
+     }
+     else if(t==='Column7'){
+      return 'root1'
+     }
+     else if(t==='Column8'){
+      return 'web1'
+     }
+     else if(t==='Column9'){
+      return 'rib2'
+     }
+     else if(t==='Column10'){
+      return 'root2'
+     }
+     else if(t==='Column11'){
+      return 'web2'
+     }
+     else if(t==='Column12'){
+      return 'mcs2'
+
+     }
+     else if(t==='Column13'){
+      return 'rib3'
+     }
+     else if(t==='Column14'){
+      return 'root3'
+     }
+     else if(t==='Column15'){
+      return 'web3'
+     }
+     else if(t==='Column16'){
+      return 'rib4'
+     }
+     else if(t==='Column17'){
+      return 'root4'
+     }
+     else if(t==='Column18'){
+      return 'web4'
+     }
+     else if(t==='Column19'){
+      return 'remark'
+     }
+          else{
+       return 'samG'
+     }
+    
+   },
+
+    setkey(){
+      this.key=this.key+1
+      let Key="sam"+this.key
+      return Key
+    },
     SortField() {
       // this.less = "";
       // this.greater = "";
@@ -2334,4 +2989,16 @@ export default {
 //     },
 //   },
 // })
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
