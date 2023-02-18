@@ -15,7 +15,7 @@
               >EDIT</v-btn
             >
 
-            <v-btn color="primary" class="white--text ml-3" to="/Home"
+            <v-btn color="primary" class="white--text ml-3" to="/HomeView"
               >HOME</v-btn
             >
           </v-row>

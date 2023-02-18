@@ -181,7 +181,24 @@
         <v-btn color="primary" @click="initialize">Reset</v-btn>
       </template>
     </v-data-table> -->
-
+    <!-- <v-select
+                    v-model="asd1"
+                    :items="DTList"
+                    label="Select"
+                    item-title="text"
+    item-value="value"
+                    persistent-hint
+                    return-object
+                    single-line
+                   
+                    required
+                  >
+                  </v-select>
+                <v-text-field
+                v-model="s.asd"
+                >
+                    
+                </v-text-field> -->
 
   </v-app>
   <!-- </v-container> -->
@@ -234,6 +251,19 @@ export default {
         { title: "Employer" },
         { title: "Student" },
       ],
+      DTList: [
+        // { text: "All", value: null },
+
+        { text: "JJ01-A1B1", value: "JJ01-A1B1" },
+        { text: "JJ01-A1B2", value: "JJ01-A1B2" },
+        { text: "JJ01-A1B3", value: "JJ01-A1B3" },
+        { text: "JJ01-A1B4", value: "JJ01-A1B4" },
+      ],
+      s:{
+
+        asd:""
+      },
+      asd1:"",
       samurl: "",
       selectedfile: null,
       show3: false,
@@ -316,6 +346,11 @@ computed:{
   },
 
   watch: {
+    asd1(val){
+      console.log("value is : ",val);
+      this.s.asd=val.value
+    }
+    ,
     dialog (val) {
       val || this.close()
     },
