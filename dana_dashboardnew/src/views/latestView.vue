@@ -979,7 +979,7 @@
     <v-data-table
       v-model="selected1"
       :headers="headers"
-      :items="SAM"
+      :items="MainDataArray"
       :single-select="singleSelect1"
       item-key="_id"
       show-select
@@ -1279,7 +1279,7 @@
               ></v-text-field>
             </v-card>
 
-            <!--             <v-list flat dense class="pa-0" v-if="counter(header.value)==='sambhaji'">
+            <!--             <v-list flat dense class="pa-0" v-if="counter(header.value)==='MainDataArraybhaji'">
               <v-list-item-group multiple v-model="activeFilters1[header.value]" class="py-2">
                 <template v-for="(item, i) in filters1[header.value]" >
                   <v-list-item :key="`item-${i}`" :value="item" :ripple="false">
@@ -1498,7 +1498,7 @@ export default {
       path2: "/Dashboard/",
       checkpointer1: false,
 
-      SAM: [],
+      MainDataArray: [],
 
       selectedfile: null,
 
@@ -1518,7 +1518,7 @@ export default {
       dtselected: false,
       selectedStep: "",
       allselect: false,
-      duplicate: "sam",
+      duplicate: "MainDataArray",
 
       postdata: {
         Project: "",
@@ -1609,6 +1609,19 @@ export default {
         this.activeFilters1["Column5"] = "";
       }
     },
+    lessmcs1(){
+      if (this.greatermcs1 != "" && this.lessmcs1 != "") {
+        this.activeFilters1["Column5"] = this.greatermcs1;
+      } else if (this.greatermcs1 != "" && this.lessmcs1 == "") {
+        this.activeFilters1["Column5"] = this.greatermcs1;
+      } else if (this.greatermcs1 == "" && this.lessmcs1 != "") {
+        this.activeFilters1["Column5"] = this.lessmcs1;
+      } else {
+        this.activeFilters1["Column5"] = "";
+      }
+    },
+
+    
     greatermcs2() {
       if (this.greatermcs2 != "" && this.lessmcs2 != "") {
         this.activeFilters1["Column12"] = this.greatermcs2;
@@ -1620,6 +1633,19 @@ export default {
         this.activeFilters1["Column12"] = "";
       }
     },
+    lessmcs2() {
+      if (this.greatermcs2 != "" && this.lessmcs2 != "") {
+        this.activeFilters1["Column12"] = this.greatermcs2;
+      } else if (this.greatermcs2 != "" && this.lessmcs2 == "") {
+        this.activeFilters1["Column12"] = this.greatermcs2;
+      } else if (this.greatermcs2 == "" && this.lessmcs2 != "") {
+        this.activeFilters1["Column12"] = this.lessmcs2;
+      } else {
+        this.activeFilters1["Column12"] = "";
+      }
+    },
+
+
     greaterrib1() {
       if (this.greaterrib1 != "" && this.lessrib1 != "") {
         this.activeFilters1["Column6"] = this.greaterrib1;
@@ -1631,6 +1657,18 @@ export default {
         this.activeFilters1["Column6"] = "";
       }
     },
+    lessrib1() {
+      if (this.greaterrib1 != "" && this.lessrib1 != "") {
+        this.activeFilters1["Column6"] = this.greaterrib1;
+      } else if (this.greaterrib1 != "" && this.lessrib1 == "") {
+        this.activeFilters1["Column6"] = this.greaterrib1;
+      } else if (this.greaterrib1 == "" && this.lessrib1 != "") {
+        this.activeFilters1["Column6"] = this.lessrib1;
+      } else {
+        this.activeFilters1["Column6"] = "";
+      }
+    },
+
     greaterrib2() {
       if (this.greaterrib2 != "" && this.lessrib2 != "") {
         this.activeFilters1["Column9"] = this.greaterrib2;
@@ -1642,6 +1680,18 @@ export default {
         this.activeFilters1["Column9"] = "";
       }
     },
+    lessrib2() {
+      if (this.greaterrib2 != "" && this.lessrib2 != "") {
+        this.activeFilters1["Column9"] = this.greaterrib2;
+      } else if (this.greaterrib2 != "" && this.lessrib2 == "") {
+        this.activeFilters1["Column9"] = this.greaterrib2;
+      } else if (this.greaterrib2 == "" && this.lessrib2 != "") {
+        this.activeFilters1["Column9"] = this.lessrib2;
+      } else {
+        this.activeFilters1["Column9"] = "";
+      }
+    },
+    
     greaterrib3() {
       if (this.greaterrib3 != "" && this.lessrib3 != "") {
         this.activeFilters1["Column13"] = this.greaterrib3;
@@ -1653,6 +1703,18 @@ export default {
         this.activeFilters1["Column13"] = "";
       }
     },
+    lessrib3() {
+      if (this.greaterrib3 != "" && this.lessrib3 != "") {
+        this.activeFilters1["Column13"] = this.greaterrib3;
+      } else if (this.greaterrib3 != "" && this.lessrib3 == "") {
+        this.activeFilters1["Column13"] = this.greaterrib3;
+      } else if (this.greaterrib3 == "" && this.lessrib3 != "") {
+        this.activeFilters1["Column13"] = this.lessrib3;
+      } else {
+        this.activeFilters1["Column13"] = "";
+      }
+    },
+
     greaterrib4() {
       if (this.greaterrib4 != "" && this.lessrib4 != "") {
         this.activeFilters1["Column16"] = this.greaterrib4;
@@ -1662,6 +1724,227 @@ export default {
         this.activeFilters1["Column16"] = this.lessrib4;
       } else {
         this.activeFilters1["Column16"] = "";
+      }
+    },
+    lessrib4() {
+      if (this.greaterrib4 != "" && this.lessrib4 != "") {
+        this.activeFilters1["Column16"] = this.greaterrib4;
+      } else if (this.greaterrib4 != "" && this.lessrib4 == "") {
+        this.activeFilters1["Column16"] = this.greaterrib4;
+      } else if (this.greaterrib4 == "" && this.lessrib4 != "") {
+        this.activeFilters1["Column16"] = this.lessrib4;
+      } else {
+        this.activeFilters1["Column16"] = "";
+      }
+    },
+
+
+    greaterroot1() {
+      if (this.greaterroot1 != "" && this.lessroot1 != "") {
+        this.activeFilters1["Column7"] = this.greaterroot1;
+      } else if (this.greaterroot1 != "" && this.lessroot1 == "") {
+        this.activeFilters1["Column7"] = this.greaterroot1;
+      } else if (this.greaterroot1 == "" && this.lessroot1 != "") {
+        this.activeFilters1["Column7"] = this.lessroot1;
+      } else {
+        this.activeFilters1["Column7"] = "";
+      }
+    },
+    lessroot1() {
+      if (this.greaterroot1 != "" && this.lessroot1 != "") {
+        this.activeFilters1["Column7"] = this.greaterroot1;
+      } else if (this.greaterroot1 != "" && this.lessroot1 == "") {
+        this.activeFilters1["Column7"] = this.greaterroot1;
+      } else if (this.greaterroot1 == "" && this.lessroot1 != "") {
+        this.activeFilters1["Column7"] = this.lessroot1;
+      } else {
+        this.activeFilters1["Column7"] = "";
+      }
+    },
+
+    greaterroot2() {
+      if (this.greaterroot2 != "" && this.lessroot2 != "") {
+        this.activeFilters1["Column10"] = this.greaterroot2;
+      } else if (this.greaterroot2 != "" && this.lessroot2 == "") {
+        this.activeFilters1["Column10"] = this.greaterroot2;
+      } else if (this.greaterroot2 == "" && this.lessroot2 != "") {
+        this.activeFilters1["Column10"] = this.lessroot2;
+      } else {
+        this.activeFilters1["Column10"] = "";
+      }
+    },
+    lessroot2() {
+      if (this.greaterroot2 != "" && this.lessroot2 != "") {
+        this.activeFilters1["Column10"] = this.greaterroot2;
+      } else if (this.greaterroot2 != "" && this.lessroot2 == "") {
+        this.activeFilters1["Column10"] = this.greaterroot2;
+      } else if (this.greaterroot2 == "" && this.lessroot2 != "") {
+        this.activeFilters1["Column10"] = this.lessroot2;
+      } else {
+        this.activeFilters1["Column10"] = "";
+      }
+    },
+
+    greaterroot3() {
+      if (this.greaterroot3 != "" && this.lessroot3 != "") {
+        this.activeFilters1["Column14"] = this.greaterroot3;
+      } else if (this.greaterroot3 != "" && this.lessroot3 == "") {
+        this.activeFilters1["Column14"] = this.greaterroot3;
+      } else if (this.greaterroot3 == "" && this.lessroot3 != "") {
+        this.activeFilters1["Column14"] = this.lessroot3;
+      } else {
+        this.activeFilters1["Column14"] = "";
+      }
+    },
+    lessroot3() {
+      if (this.greaterroot3 != "" && this.lessroot3 != "") {
+        this.activeFilters1["Column14"] = this.greaterroot3;
+      } else if (this.greaterroot3 != "" && this.lessroot3 == "") {
+        this.activeFilters1["Column14"] = this.greaterroot3;
+      } else if (this.greaterroot3 == "" && this.lessroot3 != "") {
+        this.activeFilters1["Column14"] = this.lessroot3;
+      } else {
+        this.activeFilters1["Column14"] = "";
+      }
+    },
+
+    greaterroot4() {
+      if (this.greaterroot4 != "" && this.lessroot4 != "") {
+        this.activeFilters1["Column17"] = this.greaterroot4;
+      } else if (this.greaterroot4 != "" && this.lessroot4 == "") {
+        this.activeFilters1["Column17"] = this.greaterroot4;
+      } else if (this.greaterroot4 == "" && this.lessroot4 != "") {
+        this.activeFilters1["Column17"] = this.lessroot4;
+      } else {
+        this.activeFilters1["Column17"] = "";
+      }
+    },
+    lessroot4() {
+      if (this.greaterroot4 != "" && this.lessroot4 != "") {
+        this.activeFilters1["Column17"] = this.greaterroot4;
+      } else if (this.greaterroot4 != "" && this.lessroot4 == "") {
+        this.activeFilters1["Column17"] = this.greaterroot4;
+      } else if (this.greaterroot4 == "" && this.lessroot4 != "") {
+        this.activeFilters1["Column17"] = this.lessroot4;
+      } else {
+        this.activeFilters1["Column17"] = "";
+      }
+    },
+
+
+    greaterweb1() {
+      if (this.greaterweb1 != "" && this.lessweb1 != "") {
+        this.activeFilters1["Column8"] = this.greaterweb1;
+      } else if (this.greaterweb1 != "" && this.lessweb1 == "") {
+        this.activeFilters1["Column8"] = this.greaterweb1;
+      } else if (this.greaterweb1 == "" && this.lessweb1 != "") {
+        this.activeFilters1["Column8"] = this.lessweb1;
+      } else {
+        this.activeFilters1["Column8"] = "";
+      }
+    },
+    lessweb1() {
+      if (this.greaterweb1 != "" && this.lessweb1 != "") {
+        this.activeFilters1["Column8"] = this.greaterweb1;
+      } else if (this.greaterweb1 != "" && this.lessweb1 == "") {
+        this.activeFilters1["Column8"] = this.greaterweb1;
+      } else if (this.greaterweb1 == "" && this.lessweb1 != "") {
+        this.activeFilters1["Column8"] = this.lessweb1;
+      } else {
+        this.activeFilters1["Column8"] = "";
+      }
+    },
+
+    greaterweb2() {
+      if (this.greaterweb2 != "" && this.lessweb2 != "") {
+        this.activeFilters1["Column11"] = this.greaterweb2;
+      } else if (this.greaterweb2 != "" && this.lessweb2 == "") {
+        this.activeFilters1["Column11"] = this.greaterweb2;
+      } else if (this.greaterweb2 == "" && this.lessweb2 != "") {
+        this.activeFilters1["Column11"] = this.lessweb2;
+      } else {
+        this.activeFilters1["Column11"] = "";
+      }
+    },
+    lessweb2() {
+      if (this.greaterweb2 != "" && this.lessweb2 != "") {
+        this.activeFilters1["Column11"] = this.greaterweb2;
+      } else if (this.greaterweb2 != "" && this.lessweb2 == "") {
+        this.activeFilters1["Column11"] = this.greaterweb2;
+      } else if (this.greaterweb2 == "" && this.lessweb2 != "") {
+        this.activeFilters1["Column11"] = this.lessweb2;
+      } else {
+        this.activeFilters1["Column11"] = "";
+      }
+    },
+
+    greaterweb3() {
+      if (this.greaterweb3 != "" && this.lessweb3 != "") {
+        this.activeFilters1["Column15"] = this.greaterweb3;
+      } else if (this.greaterweb3 != "" && this.lessweb3 == "") {
+        this.activeFilters1["Column15"] = this.greaterweb3;
+      } else if (this.greaterweb3 == "" && this.lessweb3 != "") {
+        this.activeFilters1["Column15"] = this.lessweb3;
+      } else {
+        this.activeFilters1["Column15"] = "";
+      }
+    },
+    lessweb3() {
+      if (this.greaterweb3 != "" && this.lessweb3 != "") {
+        this.activeFilters1["Column15"] = this.greaterweb3;
+      } else if (this.greaterweb3 != "" && this.lessweb3 == "") {
+        this.activeFilters1["Column15"] = this.greaterweb3;
+      } else if (this.greaterweb3 == "" && this.lessweb3 != "") {
+        this.activeFilters1["Column15"] = this.lessweb3;
+      } else {
+        this.activeFilters1["Column15"] = "";
+      }
+    },
+
+    greaterweb4() {
+      if (this.greaterweb4 != "" && this.lessweb4 != "") {
+        this.activeFilters1["Column18"] = this.greaterweb4;
+      } else if (this.greaterweb4 != "" && this.lessweb4 == "") {
+        this.activeFilters1["Column18"] = this.greaterweb4;
+      } else if (this.greaterweb4 == "" && this.lessweb4 != "") {
+        this.activeFilters1["Column18"] = this.lessweb4;
+      } else {
+        this.activeFilters1["Column18"] = "";
+      }
+    },
+    lessweb4() {
+      if (this.greaterweb4 != "" && this.lessweb4 != "") {
+        this.activeFilters1["Column18"] = this.greaterweb4;
+      } else if (this.greaterweb4 != "" && this.lessweb4 == "") {
+        this.activeFilters1["Column18"] = this.greaterweb4;
+      } else if (this.greaterweb4 == "" && this.lessweb4 != "") {
+        this.activeFilters1["Column18"] = this.lessweb4;
+      } else {
+        this.activeFilters1["Column18"] = "";
+      }
+    },
+
+
+    Gremark() {
+      if (this.Gremark != "" && this.Lremark != "") {
+        this.activeFilters1["Column19"] = this.Gremark;
+      } else if (this.Gremark != "" && this.Lremark == "") {
+        this.activeFilters1["Column19"] = this.Gremark;
+      } else if (this.Gremark == "" && this.Lremark != "") {
+        this.activeFilters1["Column19"] = this.Lremark;
+      } else {
+        this.activeFilters1["Column19"] = "";
+      }
+    },
+    Lremark() {
+      if (this.Gremark != "" && this.Lremark != "") {
+        this.activeFilters1["Column19"] = this.Gremark;
+      } else if (this.Gremark != "" && this.Lremark == "") {
+        this.activeFilters1["Column19"] = this.Gremark;
+      } else if (this.Gremark == "" && this.Lremark != "") {
+        this.activeFilters1["Column19"] = this.Lremark;
+      } else {
+        this.activeFilters1["Column19"] = "";
       }
     },
   },
@@ -1791,16 +2074,16 @@ export default {
           value: "Column5",
           filter: (value) => {
             // console.log("mcs1 value is :", value);
-            // let samarray=[]
+            // let MainDataArrayarray=[]
             // console.log("selected array : ", this.SortedValue);
             // var valObj = this.SortedValue.filter(function (elem) {
             //   if (elem.value == "mcs1") {
-            //     // samarray.push(elem.value)
+            //     // MainDataArrayarray.push(elem.value)
             //     return elem.value;
             //   }
             // });
             // // console.log("valobjmcs1 : ",valObj)
-            // // console.log("samarray : ",samarray)
+            // // console.log("MainDataArrayarray : ",MainDataArrayarray)
             // if (valObj.length) {
             //   this.SortGmcs1 = this.greater;
             //   this.SortLmcs1 = this.less;
@@ -1810,7 +2093,7 @@ export default {
             // }
             // console.log("Gmcs : ", this.SortGmcs1);
             if (!this.lessmcs1 && !this.greatermcs1) return true;
-            // if(this.sam) return value > parseInt(this.sam)
+            // if(this.MainDataArray) return value > parseInt(this.MainDataArray)
             if (this.lessmcs1 && !this.greatermcs1) {
               let S = value <= parseInt(this.lessmcs1);
               return S;
@@ -1844,7 +2127,7 @@ export default {
             // }
             // console.log("Grib : ", this.SortGrib1)
             if (!this.lessrib1 && !this.greaterrib1) return true;
-            // if(this.sam) return value > parseInt(this.sam)
+            // if(this.MainDataArray) return value > parseInt(this.MainDataArray)
             if (this.lessrib1 && !this.greaterrib1) {
               let S = value <= parseInt(this.lessrib1);
               return S;
@@ -1878,7 +2161,7 @@ export default {
             // }
             // console.log("Groot : ", this.SortGroot1)
             if (!this.lessroot1 && !this.greaterroot1) return true;
-            // if(this.sam) return value > parseInt(this.sam)
+            // if(this.MainDataArray) return value > parseInt(this.MainDataArray)
             if (this.lessroot1 && !this.greaterroot1) {
               let S = value <= parseInt(this.lessroot1);
               return S;
@@ -1909,7 +2192,7 @@ export default {
             //   this.SortLweb1 = "";
             // }
             if (!this.lessweb1 && !this.greaterweb1) return true;
-            // if(this.sam) return value > parseInt(this.sam)
+            // if(this.MainDataArray) return value > parseInt(this.MainDataArray)
             if (this.lessweb1 && !this.greaterweb1) {
               let S = value <= parseInt(this.lessweb1);
               return S;
@@ -1940,7 +2223,7 @@ export default {
             //   this.SortLrib2 = "";
             // }
             if (!this.lessrib2 && !this.greaterrib2) return true;
-            // if(this.sam) return value > parseInt(this.sam)
+            // if(this.MainDataArray) return value > parseInt(this.MainDataArray)
             if (this.lessrib2 && !this.greaterrib2) {
               let S = value <= parseInt(this.lessrib2);
               return S;
@@ -1971,7 +2254,7 @@ export default {
             //   this.SortLroot2 = "";
             // }
             if (!this.lessroot2 && !this.greaterroot2) return true;
-            // if(this.sam) return value > parseInt(this.sam)
+            // if(this.MainDataArray) return value > parseInt(this.MainDataArray)
             if (this.lessroot2 && !this.greaterroot2) {
               let S = value <= parseInt(this.lessroot2);
               return S;
@@ -1991,7 +2274,7 @@ export default {
           value: "Column11",
           filter: (value) => {
             if (!this.lessweb2 && !this.greaterweb2) return true;
-            // if(this.sam) return value > parseInt(this.sam)
+            // if(this.MainDataArray) return value > parseInt(this.MainDataArray)
             if (this.lessweb2 && !this.greaterweb2) {
               let S = value <= parseInt(this.lessweb2);
               return S;
@@ -2022,7 +2305,7 @@ export default {
             //   this.SortLmcs2 = "";
             // }
             if (!this.lessmcs2 && !this.greatermcs2) return true;
-            // if(this.sam) return value > parseInt(this.sam)
+            // if(this.MainDataArray) return value > parseInt(this.MainDataArray)
             if (this.lessmcs2 && !this.greatermcs2) {
               let S = value <= parseInt(this.lessmcs2);
               return S;
@@ -2042,7 +2325,7 @@ export default {
           value: "Column13",
           filter: (value) => {
             if (!this.lessrib3 && !this.greaterrib3) return true;
-            // if(this.sam) return value > parseInt(this.sam)
+            // if(this.MainDataArray) return value > parseInt(this.MainDataArray)
             if (this.lessrib3 && !this.greaterrib3) {
               let S = value <= parseInt(this.lessrib3);
               return S;
@@ -2062,7 +2345,7 @@ export default {
           value: "Column14",
           filter: (value) => {
             if (!this.lessroot3 && !this.greaterroot3) return true;
-            // if(this.sam) return value > parseInt(this.sam)
+            // if(this.MainDataArray) return value > parseInt(this.MainDataArray)
             if (this.lessroot3 && !this.greaterroot3) {
               let S = value <= parseInt(this.lessroot3);
               return S;
@@ -2082,7 +2365,7 @@ export default {
           value: "Column15",
           filter: (value) => {
             if (!this.lessweb3 && !this.greaterweb3) return true;
-            // if(this.sam) return value > parseInt(this.sam)
+            // if(this.MainDataArray) return value > parseInt(this.MainDataArray)
             if (this.lessweb3 && !this.greaterweb3) {
               let S = value <= parseInt(this.lessweb3);
               return S;
@@ -2102,7 +2385,7 @@ export default {
           value: "Column16",
           filter: (value) => {
             if (!this.lessrib4 && !this.greaterrib4) return true;
-            // if(this.sam) return value > parseInt(this.sam)
+            // if(this.MainDataArray) return value > parseInt(this.MainDataArray)
             if (this.lessrib4 && !this.greaterrib4) {
               let S = value <= parseInt(this.lessrib4);
               return S;
@@ -2122,7 +2405,7 @@ export default {
           value: "Column17",
           filter: (value) => {
             if (!this.lessroot4 && !this.greaterroot4) return true;
-            // if(this.sam) return value > parseInt(this.sam)
+            // if(this.MainDataArray) return value > parseInt(this.MainDataArray)
             if (this.lessroot4 && !this.greaterroot4) {
               let S = value <= parseInt(this.lessroot4);
               return S;
@@ -2142,7 +2425,7 @@ export default {
           value: "Column18",
           filter: (value) => {
             if (!this.lessweb4 && !this.greaterweb4) return true;
-            // if(this.sam) return value > parseInt(this.sam)
+            // if(this.MainDataArray) return value > parseInt(this.MainDataArray)
             if (this.lessweb4 && !this.greaterweb4) {
               let S = value <= parseInt(this.lessweb4);
               return S;
@@ -2162,7 +2445,7 @@ export default {
           value: "Column19",
           filter: (value) => {
             if (!this.Lremark && !this.Gremark) return true;
-            // if(this.sam) return value > parseInt(this.sam)
+            // if(this.MainDataArray) return value > parseInt(this.MainDataArray)
             if (this.Lremark && !this.Gremark) {
               let S = value <= parseInt(this.Lremark);
               return S;
@@ -2190,7 +2473,7 @@ export default {
     initialize() {
       let col1;
       for (col1 in this.filters1) {
-        this.filters1[col1] = this.SAM.map((d1) => {
+        this.filters1[col1] = this.MainDataArray.map((d1) => {
           return d1[col1];
         }).filter((value1, index1, self1) => {
           return self1.indexOf(value1) === index1;
@@ -2243,13 +2526,13 @@ export default {
       } else if (t === "Column19") {
         return "remark";
       } else {
-        return "samG";
+        return "MainDataArrayG";
       }
     },
 
     setkey() {
       this.key = this.key + 1;
-      let Key = "sam" + this.key;
+      let Key = "MainDataArray" + this.key;
       return Key;
     },
     SortField() {
@@ -2338,10 +2621,10 @@ export default {
             this.postdata.Report
         )
         .then((resp) => {
-          this.SAM = resp.data;
-          console.log("this.sam : ", this.SAM);
+          this.MainDataArray = resp.data;
+          console.log("this.MainDataArray : ", this.MainDataArray);
 
-          if (this.SAM.length == 0) {
+          if (this.MainDataArray.length == 0) {
             console.log("not duplicate pair is present");
             this.abc = "not";
           } else {
@@ -2382,7 +2665,7 @@ export default {
     save2() {
       this.getapicall1();
       console.log("duplicate is : ", this.duplicate);
-      if (this.duplicate == "sam2") {
+      if (this.duplicate == "MainDataArray2") {
         alert("Inserting wrong data...");
       } else {
         this.gtpr.Project = this.postdata.Project;
@@ -2426,9 +2709,9 @@ export default {
         .get("http://localhost:8083/api/items")
         // .get("http://localhost:3000/DATA1/")
         .then((resp) => {
-          this.SAM = resp.data;
-          this.SAM.reverse();
-          console.log("this.sam : ", this.SAM);
+          this.MainDataArray = resp.data;
+          this.MainDataArray.reverse();
+          console.log("this.MainDataArray : ", this.MainDataArray);
           console.log("selected array : ", this.selected1);
         })
         .catch((err) => {
@@ -2526,7 +2809,7 @@ export default {
             // namepp2: "no file selected",
           };
           this.getapicall();
-          console.log("data inserted : ", this.SAM);
+          console.log("data inserted : ", this.MainDataArray);
         })
         .catch((err) => {
           console.log("Error : ", err);
@@ -2853,7 +3136,7 @@ export default {
               console.log("else block");
             }
 
-            this.samurl = downloadURL;
+            this.MainDataArrayurl = downloadURL;
             console.log("File available at : ", downloadURL);
           });
         }
@@ -2863,12 +3146,12 @@ export default {
 };
 
 // filter: value => {
-//             if (!this.calories && !this.sam) return true
-//              // if(this.sam) return value > parseInt(this.sam)
-//            if(this.calories && this.sam)
+//             if (!this.calories && !this.MainDataArray) return true
+//              // if(this.MainDataArray) return value > parseInt(this.MainDataArray)
+//            if(this.calories && this.MainDataArray)
 
 //            {
-//              let S =value < parseInt(this.calories) && value>parseInt(this.sam)
+//              let S =value < parseInt(this.calories) && value>parseInt(this.MainDataArray)
 
 //              return S}
 //           },
@@ -2903,7 +3186,7 @@ export default {
 //             </td>
 //              <td>
 //               <v-text-field
-//                 v-model="sam"
+//                 v-model="MainDataArray"
 //                 type="number"
 //                 label="greater than"
 //               ></v-text-field>
@@ -2923,7 +3206,7 @@ export default {
 //     return {
 //       search: '',
 //       calories: '',
-//       sam:'',
+//       MainDataArray:'',
 //       desserts: [
 //         {
 //           name: 'Frozen Yogurt',
@@ -3021,12 +3304,12 @@ export default {
 //           text: 'Calories',
 //           value: 'calories',
 //           filter: value => {
-//             if (!this.calories && !this.sam) return true
-//              // if(this.sam) return value > parseInt(this.sam)
-//            if(this.calories && this.sam)
+//             if (!this.calories && !this.MainDataArray) return true
+//              // if(this.MainDataArray) return value > parseInt(this.MainDataArray)
+//            if(this.calories && this.MainDataArray)
 
 //            {
-//              let S =value < parseInt(this.calories) && value>parseInt(this.sam)
+//              let S =value < parseInt(this.calories) && value>parseInt(this.MainDataArray)
 
 //              return S}
 //           },

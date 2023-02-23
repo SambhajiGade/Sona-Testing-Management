@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-row class="mt-8" justify="center">
+    <v-row class="mt-0" justify="center">
       <v-col cols="2" class="pa-0">
         <v-select
           :items="DTList"
@@ -14,7 +14,7 @@
       <v-btn color="primary" class="white--text ml-3" to="/HomeView">HOME</v-btn>
     </v-row>
 
-    <body class="mt-5 ml-1">
+    <body class="mt-0 ml-1">
       <!-- <hr /> -->
       <table id="table1" cellspacing="0" border="1">
         <tbody>
@@ -243,7 +243,7 @@ CanvasJS = CanvasJS.Chart ? CanvasJS : window.CanvasJS;
 export default {
   data() {
     return {
-      SAM: [],
+      MainDataArray1: [],
       DTList: [
         // { text: "All", value: null },
 
@@ -265,14 +265,31 @@ export default {
       if(val==" "){
         this.DTFilterValue="";
       }
+      
     }
   },
+created(){
+  // console.log("refressed..........................")
+  // window.addEventListener('beforeunload', function(event) {
+  //        event.returnValue = 'Write something'
+  //        console.log("refressed..........................")
+  //        this.$route.params.Project=" ";
+  //     })
 
+},
   mounted() {
-    this.DTFilterValue = this.$route.params.Project;
+    console.log("params : ",this.$route.params.Project)
+    if(this.$route.params.Project=="" || this.$route.params.Project==" "){
+      this.$route.params.Project==" "
+      this.DTFilterValue=""
+    }
+    else{
+      this.DTFilterValue = this.$route.params.Project;
     this.getapicall();
+    }
+    
 
-    // this.Sambhaji();
+    // this.ResultFunction();
   },
   methods: {
     selectedI() {
@@ -284,11 +301,11 @@ export default {
         .get("http://localhost:8083/api/items/" + this.DTFilterValue)
         // .get("http://localhost:3000/DATA1?Project=" + this.DTFilterValue)
         .then((resp) => {
-          this.SAM = resp.data;
-          console.log("this.sam : ", this.SAM);
+          this.MainDataArray1 = resp.data;
+          console.log("this.MainDataArray1 : ", this.MainDataArray1);
           // this.DTFilterValue="";
           this.$route.params.Project = "";
-          this.Sambhaji();
+          this.ResultFunction();
         })
         .catch((err) => {
           console.log("Error : ", err);
@@ -313,10 +330,10 @@ export default {
           )
           .then((resp) => {
             this.P2[value] = resp.data;
-            // console.log("this.sam : ", this.SAM);
+            // console.log("this.MainDataArray1 : ", this.MainDataArray1);
             // // this.DTFilterValue="";
             // this.$route.params.Project = "";
-            // this.Sambhaji();
+            // this.ResultFunction();
             console.log("P2 of ", value, " : ", this.P2[value]);
             // index++;
           })
@@ -342,10 +359,10 @@ export default {
           )
           .then((resp) => {
             this.P4[value] = resp.data;
-            // console.log("this.sam : ", this.SAM);
+            // console.log("this.MainDataArray1 : ", this.MainDataArray1);
             // // this.DTFilterValue="";
             // this.$route.params.Project = "";
-            // this.Sambhaji();
+            // this.ResultFunction();
             console.log("P4 of ", value, " : ", this.P4[value]);
             // index++;
           })
@@ -355,7 +372,7 @@ export default {
       }
     },
 
-    async Sambhaji() {
+    async ResultFunction() {
       let Data = [];
 
       document.getElementById("a").innerHTML = "";
@@ -368,9 +385,9 @@ export default {
       document.getElementById("h").innerHTML = "";
       document.getElementById("i").innerHTML = "";
 
-      let SAMG = this.SAM;
+      let MainDataArray2 = this.MainDataArray1;
 
-      console.log("SAMG : ", SAMG);
+      console.log("MainDataArray2 : ", MainDataArray2);
 
       let temp1 = {
         Project: "",
@@ -395,11 +412,11 @@ export default {
         id: null,
       };
 
-      console.log("SAMG updated: ", SAMG);
+      console.log("MainDataArray2 updated: ", MainDataArray2);
 
-      console.log([...new Set(SAMG.map(({ JJ01 }) => JJ01))]);
+      console.log([...new Set(MainDataArray2.map(({ JJ01 }) => JJ01))]);
 
-      let set1 = [...new Set(SAMG.map(({ JJ01 }) => JJ01))];
+      let set1 = [...new Set(MainDataArray2.map(({ JJ01 }) => JJ01))];
       console.log("Set1 : ", set1);
 
       await this.find2P(set1);
@@ -449,12 +466,12 @@ export default {
 
       for (let i5 = 0; i5 < P2andP4.length; i5++) {
         for (let i6 = 0; i6 < 3; i6++) {
-          SAMG[Index] = P2andP4[i5][i6];
+          MainDataArray2[Index] = P2andP4[i5][i6];
           Index++;
         }
       }
 
-      console.log("SAMG Final : ", SAMG);
+      console.log("MainDataArray2 Final : ", MainDataArray2);
 
       // this.condition1=true
       let B1 = false;
@@ -464,14 +481,14 @@ export default {
       let Array = [];
       let A = 0;
 
-      for (let i = 0; i < SAMG.length; i = i + 3) {
+      for (let i = 0; i < MainDataArray2.length; i = i + 3) {
         let t = i;
 
-        let obj1 = SAMG[t];
+        let obj1 = MainDataArray2[t];
 
-        let obj2 = SAMG[t + 1];
+        let obj2 = MainDataArray2[t + 1];
 
-        let obj3 = SAMG[t + 2];
+        let obj3 = MainDataArray2[t + 2];
 
         let arr3 = [];
         let arr2 = [];
@@ -578,9 +595,9 @@ export default {
       let my = 0;
       let mz = 0;
 
-      for (let i = 0; i < SAMG.length; i++) {
+      for (let i = 0; i < MainDataArray2.length; i++) {
         if (y < 3) {
-          m1[y] = SAMG[i].Column5;
+          m1[y] = MainDataArray2[i].Column5;
           y++;
         } else {
           y = 0;
@@ -600,7 +617,7 @@ export default {
         console.log("mcs1 : ", mcs1);
 
         if (z < 3) {
-          m2[z] = SAMG[i].Column12;
+          m2[z] = MainDataArray2[i].Column12;
           z++;
         } else {
           z = 0;
@@ -636,9 +653,9 @@ export default {
       let bsc = 0;
 
       let pointer = 0;
-      for (let i1 = 0; i1 < SAMG.length; i1 += 3) {
-        let gp = SAMG[i1].Project;
-        let dt = SAMG[i1].JJ01;
+      for (let i1 = 0; i1 < MainDataArray2.length; i1 += 3) {
+        let gp = MainDataArray2[i1].Project;
+        let dt = MainDataArray2[i1].JJ01;
         let title = gp + " @" + dt;
 
         let cs1 = mcs1[cs];
@@ -742,10 +759,10 @@ export default {
 
       // SortedArray=[];
 
-      let SambhajiGade1 = [];
-      let SambhajiGade2 = [];
+      let GraphArray1 = [];
+      let GraphArray2 = [];
       for (let z = 0; z < man1.length; z++) {
-        SambhajiGade1.push({
+        GraphArray1.push({
           type: "column",
           name: Data[z][0],
 
@@ -760,7 +777,7 @@ export default {
       }
 
       for (let z = 0; z < man1.length; z++) {
-        SambhajiGade2.push({
+        GraphArray2.push({
           type: "column",
           name: Data[z][0],
           legendText: Data[z][0],
@@ -794,7 +811,7 @@ export default {
           cursor: "pointer",
           itemclick: toggleDataSeries,
         },
-        data: SambhajiGade1,
+        data: GraphArray1,
       });
       chart.render();
 
@@ -831,7 +848,7 @@ export default {
           itemclick: toggleDataSeries1,
         },
 
-        data: SambhajiGade2,
+        data: GraphArray2,
       });
       chart1.render();
 

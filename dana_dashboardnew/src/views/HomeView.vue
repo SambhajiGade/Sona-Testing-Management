@@ -450,7 +450,7 @@ export default {
 
       selectedStep: "",
 
-      SAM: [],
+      MainDataArray: [],
       postdata: {
         Project: "",
         JJ01: "",
@@ -518,24 +518,14 @@ export default {
       this.projectclick = true;
     },
     DTselected() {
-      // if (this.projectclick) {
-      //   // this.getapicall();
+  
       this.dtselected = true;
-      // } else {
-      //   alert("Select Project first...");
-      //   this.postdata.JJ01 = null;
-      // }
+    
     },
 
     AppSelect() {
       this.appclick = true;
-      // console.log("app selected-------------------------------------------------------------------")
-      // if (this.dtselected) {
-      //   this.getapicall();
-      // } else {
-      //   alert("Select Differential Torque first...");
-      //   this.postdata.Column3 = null;
-      // }
+    
     },
 
     addData() {},
@@ -553,17 +543,17 @@ export default {
             this.postdata.Report
         )
         .then((resp) => {
-          this.SAM = resp.data;
-          console.log("this.sam : ", this.SAM);
+          this.MainDataArray = resp.data;
+          
 
-          if (this.SAM.length == 0) {
+          if (this.MainDataArray.length == 0) {
             console.log("not duplicate pair is present");
             this.abc = "not";
           } else {
             alert("Inserted duplicate Data...");
-            // this.postdata.Report = null;
+          
             this.abc = "duplicate";
-            // this.postdata.JJ01 = null;
+            
           }
         })
         .catch((err) => {
@@ -571,15 +561,14 @@ export default {
         });
     },
     selectedItm() {
-      console.log("Selected item is in method : ", this.DTFilterValue);
+   
       this.path2="/Dashboard/"
       this.path2 = this.path2 + this.DTFilterValue;
       this.checkpointer = true;
       this.disableb = false;
     },
     dash1() {
-      console.log("dashboard clicked : ", this.path1);
-      console.log("updatated path is : ", this.path2);
+      
       if (this.checkpointer) {
         this.$router.push(this.path2);
       } else {
@@ -592,25 +581,25 @@ export default {
     },
 
     selectpost(sp) {
-      console.log("selected post : ", sp);
+     
 
       if (this.postdata.Project != "") {
         if (this.postdata.JJ01 != null) {
           if (this.postdata.Column3 != "") {
             this.allselect = true;
             this.reportclick = true;
-            // this.getapicall();
+          
           } else {
             alert("Enter Application...");
-            // this.postdata.Report=null;
+           
           }
         } else {
           alert("Enter Differential Torque...");
-          // this.postdata.Report=null;
+         
         }
       } else {
         alert("Enter Project...");
-        // this.postdata.Report=null;
+        
       }
       this.selectedStep = sp;
     },
@@ -703,8 +692,8 @@ export default {
         .then((result) => {
           console.log("Result : ", result);
           // this.pcddata();
-          this.$router.push("/Data/");
-          console.log("data inserted : ", this.SAM);
+          this.$router.push("/latestView/");
+          
         })
         .catch((err) => {
           console.log("Error : ", err);

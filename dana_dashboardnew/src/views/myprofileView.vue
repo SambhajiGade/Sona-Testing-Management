@@ -373,10 +373,10 @@
         <tr>
           <td
             style="
-              border-top: 2px solid #000000;
-              border-bottom: 2px solid #000000;
+              border: 2px solid #000000;
+              /* border-bottom: 2px solid #000000;
               border-left: 2px solid #000000;
-              border-right: 2px solid #000000;
+              border-right: 2px solid #000000; */
             "
             colspan="18"
             height="24"
@@ -395,9 +395,9 @@
         <tr>
           <td
             style="
-              border-top: 2px solid #000000;
-              border-left: 2px solid #000000;
-              border-right: 1px solid #000000;
+              border: 2px solid #000000;
+              /* border-left: 2px solid #000000;
+              border-right: 1px solid #000000; */
             "
             height="20"
             align="center"
@@ -410,8 +410,8 @@
           </td>
           <td
             style="
-              border-top: 2px solid #000000;
-              border-right: 1px solid #000000;
+              border: 2px solid #000000;
+              /* border-right: 1px solid #000000; */
             "
             align="center"
             valign="middle"
@@ -423,9 +423,9 @@
           </td>
           <td
             style="
-              border-top: 2px solid #000000;
-              border-left: 1px solid #000000;
-              border-right: 1px solid #000000;
+              border: 2px solid #000000;
+              /* border-left: 1px solid #000000;
+              border-right: 1px solid #000000; */
             "
             align="center"
             valign="middle"
@@ -437,9 +437,9 @@
           </td>
           <td
             style="
-              border-top: 2px solid #000000;
-              border-left: 1px solid #000000;
-              border-right: 1px solid #000000;
+              border: 2px solid #000000;
+              /* border-left: 1px solid #000000;
+              border-right: 1px solid #000000; */
             "
             align="center"
             valign="middle"
@@ -451,9 +451,9 @@
           </td>
           <td
             style="
-              border-top: 2px solid #000000;
-              border-left: 1px solid #000000;
-              border-right: 1px solid #000000;
+              border: 2px solid #000000;
+              /* border-left: 1px solid #000000;
+              border-right: 1px solid #000000; */
             "
             align="center"
             valign="middle"
@@ -465,9 +465,9 @@
           </td>
           <td
             style="
-              border-top: 2px solid #000000;
-              border-left: 1px solid #000000;
-              border-right: 1px solid #000000;
+              border: 2px solid #000000;
+              /* border-left: 1px solid #000000;
+              border-right: 1px solid #000000; */
             "
             align="center"
             valign="middle"
@@ -479,9 +479,9 @@
           </td>
           <td
             style="
-              border-top: 2px solid #000000;
-              border-left: 1px solid #000000;
-              border-right: 2px solid #000000;
+              border: 2px solid #000000;
+              /* border-left: 1px solid #000000;
+              border-right: 2px solid #000000; */
             "
             align="center"
             valign="middle"
@@ -1174,7 +1174,7 @@ export default {
       path2: "/Dashboard/",
       checkpointer1: false,
 
-      SAM: [],
+      MainDataArray: [],
 
       SData: null,
 
@@ -1196,7 +1196,7 @@ export default {
       dtselected: false,
       selectedStep: "",
       allselect: false,
-      duplicate: "sam",
+      duplicate: "MainDataArray",
 
       postdata: {
         Project1: "",
@@ -1271,11 +1271,11 @@ export default {
 
       const formData = new FormData();
       formData.append("files", imgfile);
-      // formData.append('name',sam)
-//       let sam={
-//   name1:"Sambhaji"
+      // formData.append('name',MainDataArray)
+//       let MainDataArray={
+//   name1:"MainDataArraybhaji"
 // }
-formData.append('s',"sam")
+formData.append('s',"MainDataArray")
 
       let avatar = formData;
       console.log("formdata : ", avatar);
@@ -1393,7 +1393,7 @@ formData.append('s',"sam")
             namepp2: "no file selected",
           };
           //   this.getapicall();
-          console.log("data inserted : ", this.SAM);
+          console.log("data inserted : ", this.MainDataArray);
         })
         .catch((err) => {
           console.log("Error : ", err);
@@ -1610,7 +1610,7 @@ formData.append('s',"sam")
       //         console.log("else block");
       //       }
 
-      //       this.samurl = downloadURL;
+      //       this.MainDataArrayurl = downloadURL;
       //       console.log("File available at : ", downloadURL);
       //     });
       //   }

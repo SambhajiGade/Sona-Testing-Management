@@ -28,7 +28,8 @@
     <!-- Sizes your content based upon application components -->
     <v-main>
       <!-- Provides the application the proper gutter -->
-      <v-container fluid>
+      <!-- <div>sam</div> -->
+      <v-container>
         <!-- If using vue-router -->
         <router-view></router-view>
       </v-container>
@@ -45,6 +46,7 @@ export default {
     drawer: null,
     items: [
       { title: "Home", icon: " mdi-home", to: "/HomeView" },
+      { title: "Dashboard", icon: " mdi-home", to: "/Dashboard/ " },
       { title: "Geometric Parameters ", icon: "mdi-dropbox", to: "/about" },
       { title: "FEA Data", icon: "mdi-calendar-clock", to: "/latestView" },
       {
@@ -52,7 +54,7 @@ export default {
         icon: "  mdi-account-box-outline",
         to: "/FEAContact",
       },
-      { title: "Dashboard", icon: " mdi-home", to: "/Dashboard/ " },
+      
     ],
   }),
 };
